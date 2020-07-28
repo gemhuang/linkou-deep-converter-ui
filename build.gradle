@@ -1,0 +1,107 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.1.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'org.iii'
+version = '1.0.0-RELEASE'
+sourceCompatibility = '1.8'
+
+ext {
+	zkStarterVersion = '2.3.1'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenLocal()
+	maven { url 'https://mavensync.zkoss.org/maven2' }
+	maven { url 'https://mavensync.zkoss.org/eval' }
+	mavenCentral()
+}
+
+dependencies {
+
+	implementation 'org.apache.commons:commons-collections4:4.4'
+	implementation 'org.apache.commons:commons-lang3:3.11'
+	implementation 'org.apache.commons:commons-csv:1.8'
+	implementation 'com.ibm.icu:icu4j:67.1'
+	implementation 'com.atlassian.commonmark:commonmark:0.15.2'
+
+
+	implementation 'net.lingala.zip4j:zip4j:2.6.1'
+
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.3'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'com.zaxxer:HikariCP:3.4.5'
+    runtimeOnly 'com.h2database:h2'
+
+	implementation "org.zkoss.zkspringboot:zkspringboot-starter:${zkStarterVersion}"
+
+	compileOnly 'org.projectlombok:lombok'
+
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	annotationProcessor 'org.projectlombok:lombok'
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
+
+def archiveName = "ConverterUI.jar"
+
+bootJar {
+	archiveFileName = "$archiveName"
+}
+
+def distDir = "$projectDir/ConverterUI"
+def scriptDir = "$projectDir/scripts"
+def distName = "ConverterUI.zip"
+
+task cleanDist {
+	doLast {
+		delete "$distDir"
+	}
+}
+
+cleanDist.dependsOn build
+
+task copyDist(type: Copy) {
+	from "$buildDir/libs/$archiveName"
+	from "$scriptDir/run.bat"
+	from "$scriptDir/run.sh"
+	into "$distDir/"
+}
+
+copyDist.dependsOn cleanDist
+
+task mkWorkpsace {
+	doLast {
+		mkdir "$distDir/workspace"
+		mkdir "$distDir/workspace/files"
+		mkdir "$distDir/workspace/images"
+		mkdir "$distDir/workspace/images/brands"
+		mkdir "$distDir/workspace/upload"
+	}
+}
+
+mkWorkpsace.dependsOn copyDist
+
+task packDist(type: Zip) {
+	archiveFileName = "$distName"
+	destinationDirectory = file("$buildDir/dist")
+
+	from "$distDir"
+}
+
+packDist.dependsOn mkWorkpsace

@@ -1,0 +1,78 @@
+<zk>
+    <window viewModel="@id('vm') @init('org.iii.converter.viewmodel.ProviderViewModel')">
+        <borderlayout height="1330px">
+            <north title="編輯品牌" maxsize="120" size="120px">
+                <hlayout height="120px" valign="middle">
+                    <button label="首頁" onClick='execution.sendRedirect("/index")'/>
+                    <button label="編輯數據集" onClick='execution.sendRedirect("/datasets")'/>
+                </hlayout>
+            </north>
+            <center>
+                <grid>
+                    <columns sizable="true">
+                        <column label="欄位" width="300px"/>
+                        <column label="內容"/>
+                    </columns>
+                    <rows>
+                        <row>
+                            <label value="品牌名稱(!)" width="300px"/>
+                            <hlayout>
+                                <textbox value="@bind(vm.provider.name)" width="600px"/>
+                                <label value="@load(vm.providerMsg.nameMsg)"/>
+                            </hlayout>
+                        </row>
+                        <row>
+                            <label value="品牌代碼(!)" width="300px"/>
+                            <hlayout>
+                                <textbox value="@bind(vm.provider.code)" width="600px"/>
+                                <label value="@load(vm.providerMsg.codeMsg)"/>
+                            </hlayout>
+                        </row>
+                        <row>
+                            <label value="聯絡電話" width="300px"/>
+                            <textbox value="@bind(vm.provider.officialTel)" width="600px"/>
+                        </row>
+                        <row>
+                            <label value="聯絡信箱" width="300px"/>
+                            <textbox value="@bind(vm.provider.officialEmail)" width="600px"/>
+                        </row>
+                        <row>
+                            <label value="聯絡地址" width="300px"/>
+                            <textbox value="@bind(vm.provider.address)" width="600px"/>
+                        </row>
+                        <row>
+                            <label value="品牌網站" width="300px"/>
+                            <textbox value="@bind(vm.provider.website)" width="600px"/>
+                        </row>
+                        <row>
+                            <label value="品牌簡介" width="300px"/>
+                            <textbox value="@bind(vm.provider.description)"
+                                     rows="10" width="600px" style="font-family: monospace;"
+                                     placeholder="@load(vm.providerMsg.descPlaceholder)"/>
+                        </row>
+                        <row>
+                            <hlayout valign="top">
+                                <label value="品牌識別(!)" width="300px"/>
+                            </hlayout>
+                            <vlayout>
+                                <hlayout>
+                                    <textbox value="@bind(vm.provider.logo)" width="350px"/>
+                                    <button label="選擇檔案" upload="true" onUpload="@command('uploadCI')"/>
+                                    <label value="@load(vm.providerMsg.logoMsg)"/>
+                                </hlayout>
+                                <image content="@bind(vm.providerCI)" width="300px" height="300px"/>
+                            </vlayout>
+                        </row>
+                        <row>
+                            <label value=""/>
+                            <hlayout>
+                                <button label="儲存" onClick="@command('saveProvider')"/>
+                                <label value="@load(vm.providerMsg.saveMsg)"/>
+                            </hlayout>
+                        </row>
+                    </rows>
+                </grid>
+            </center>
+        </borderlayout>
+    </window>
+</zk>

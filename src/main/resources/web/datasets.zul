@@ -1,0 +1,272 @@
+<zk>
+    <window viewModel="@id('vm') @init('org.iii.converter.viewmodel.DatasetsViewModel')">
+        <borderlayout height="2600px">
+            <north title="編輯數據集" maxsize="120" size="120px">
+                <hlayout height="120px">
+                    <button label="首頁" onClick='execution.sendRedirect("/index")'/>
+                    <button label="編輯品牌" onClick='execution.sendRedirect("/provider")'/>
+                </hlayout>
+            </north>
+            <center>
+                <borderlayout>
+
+                    <west title="數據集清單" slidable="true" collapsible="true" size="200px">
+                        <vlayout>
+                            <button label="新增數據集" onClick="@command('initDataset')" width="100%"/>
+                            <listbox model="@load(vm.ingDatasets)"
+                                     onDoubleClick="@command('editDataset')"
+                                     selectedIndex="@bind(vm.ingDatasetIndex)"
+                                     emptyMessage="還沒有數據集" width="100%">
+                                <template name="model">
+                                    <listitem>
+                                        <listcell>
+                                            <image src="@init(each.imageSrc)" height="100px" width="160px"/>
+                                        </listcell>
+                                        <listcell>
+                                            <label value="@init(each.title)"/>
+                                        </listcell>
+                                    </listitem>
+                                </template>
+                            </listbox>
+                        </vlayout>
+                    </west>
+
+                    <center>
+                        <vlayout>
+                            <groupbox mold="3d">
+                                <caption label="數據集主檔"/>
+                                <grid>
+                                    <columns sizable="true">
+                                        <column label="欄位" width="300px"/>
+                                        <column label="內容"/>
+                                    </columns>
+                                    <rows>
+                                        <row>
+                                            <label value="數據集標題(!)" width="300px"/>
+                                            <hlayout>
+                                                <textbox value="@bind(vm.ingTitle)" onChange="@command('editing')"
+                                                         width="600px"/>
+                                                <label value="@load(vm.datasetMsg.titleMsg)"/>
+                                            </hlayout>
+                                        </row>
+                                        <row>
+                                            <label value="數據集副標題" width="300px"/>
+                                            <textbox value="@bind(vm.ingSubTitle)" onChange="@command('editing')"
+                                                     width="600px"/>
+                                        </row>
+                                        <row>
+                                            <label value="數據集簡介" width="300px"/>
+                                            <textbox value="@bind(vm.ingDatasetDesc)" onChange="@command('editing')"
+                                                     rows="10" width="600px" style="font-family: monospace;"
+                                                     placeholder="@load(vm.datasetMsg.descPlaceholder)"/>
+                                        </row>
+                                        <row>
+                                            <label value="數據集圖片" width="300px"/>
+                                            <vlayout>
+                                                <textbox value="@bind(vm.ingImageSrc)" onChange="@command('editing')"
+                                                         width="600px"
+                                                         placeholder="@load(vm.datasetMsg.imgPlaceholder)"/>
+                                                <image src="@load(vm.ingImageSrc)" height="300px"/>
+                                            </vlayout>
+                                        </row>
+                                        <row>
+                                            <label value="數據集檔案授權" width="300px"/>
+                                            <selectbox model="@load(vm.licenseList)"
+                                                       selectedIndex="@bind(vm.ingFileLicenseIndex)"
+                                                       width="200px">
+                                                <template name="model">
+                                                    <label value="@init(each)"/>
+                                                </template>
+                                            </selectbox>
+                                        </row>
+                                        <row>
+                                            <label value="數據集 API 授權" width="300px"/>
+                                            <selectbox model="@load(vm.licenseList)"
+                                                       selectedIndex="@bind(vm.ingAPILicenseIndex)"
+                                                       width="200px">
+                                                <template name="model">
+                                                    <label value="@init(each)"/>
+                                                </template>
+                                            </selectbox>
+                                        </row>
+                                        <row>
+                                            <label value="數據集分類" width="300px"/>
+                                            <combobox model="@load(vm.categoryMap)"
+                                                      selectedItem="@bind(vm.ingCategoryEntry)"
+                                                      width="200px">
+                                                <template name="model">
+                                                    <comboitem label="@load(each.key)" value="@load(each.value)"/>
+                                                </template>
+                                            </combobox>
+                                        </row>
+                                        <row>
+                                            <label value="數據集檔案" width="300px"/>
+                                            <hlayout>
+                                                <button label="上傳 data.zip" onUpload="@command('uploadDataZip')"
+                                                        upload="true"/>
+                                                <label value="@load(vm.ingDataZipName)"/>
+                                            </hlayout>
+                                        </row>
+                                    </rows>
+                                </grid>
+                            </groupbox>
+                            <groupbox mold="3d">
+                                <caption label="數據集檔案"/>
+                                <hbox>
+                                    <groupbox width="200px" mold="3d">
+                                        <caption label="檔案列表"/>
+                                        <listbox model="@load(vm.ingDatasetFiles)"
+                                                 onDoubleClick="@command('editFileDesc')"
+                                                 selectedIndex="@bind(vm.ingDatasetFileIndex)"
+                                                 width="180px" emptyMessage="還沒有檔案">
+                                            <template name="model">
+                                                <listitem>
+                                                    <listcell label="@load(each.fileName)"/>
+                                                </listitem>
+                                            </template>
+                                        </listbox>
+                                    </groupbox>
+                                    <splitter collapse="before"/>
+                                    <groupbox mold="3d">
+                                        <caption label="檔案說明"/>
+                                        <vlayout>
+                                            <textbox value="@bind(vm.ingDatasetFileDesc)"
+                                                     onChange="@command('fileEditing')"
+                                                     placeholder="@load(vm.datasetMsg.descPlaceholder)"
+                                                     rows="30" width="600px" style="font-family: monospace;"/>
+                                            <hlayout>
+                                                <button label="更新" onClick="@command('saveFileDesc')"/>
+                                                <button label="取消" onClick="@command('restoreFileDesc')"/>
+                                            </hlayout>
+                                        </vlayout>
+                                    </groupbox>
+                                </hbox>
+                            </groupbox>
+                            <groupbox mold="3d">
+                                <caption label="數據集 API"/>
+                                <hbox>
+                                    <groupbox width="200px" mold="3d">
+                                        <caption label="API 列表"/>
+                                        <vlayout>
+                                            <button label="新增數據 API" onClick="@command('initAPI')" width="100%"/>
+                                            <listbox model="@load(vm.ingDatasetAPIs)"
+                                                     onDoubleClick="@command('editAPI')"
+                                                     selectedIndex="@bind(vm.ingDatasetAPIIndex)"
+                                                     emptyMessage="還沒有 API" width="100%">
+                                                <template name="model">
+                                                    <listitem>
+                                                        <listcell label="@load(each.apiName)"/>
+                                                    </listitem>
+                                                </template>
+                                            </listbox>
+                                        </vlayout>
+                                    </groupbox>
+                                    <splitter collapse="before"/>
+                                    <vlayout>
+                                        <grid>
+                                            <columns sizable="true">
+                                                <column label="欄位" width="200px"/>
+                                                <column label="內容"/>
+                                            </columns>
+                                            <rows>
+                                                <row>
+                                                    <label value="API 名稱(!)" width="200px"/>
+                                                    <hlayout>
+                                                        <textbox value="@bind(vm.ingApiName)"
+                                                                 onChange="@command('apiEditing')"
+                                                                 width="400px"/>
+                                                        <label value=""/>
+                                                    </hlayout>
+                                                </row>
+                                                <row>
+                                                    <label value="API 呼叫網址" width="200px"/>
+                                                    <vlayout>
+                                                        <selectbox model="@load(vm.methodList)"
+                                                                   selectedIndex="@bind(vm.ingMethodIndex)"
+                                                                   onSelect="@command('apiEditing')"
+                                                                   width="80px">
+                                                            <template name="model">
+                                                                <label value="@init(each)"/>
+                                                            </template>
+                                                        </selectbox>
+                                                        <textbox value="@bind(vm.ingUrl)"
+                                                                 onChange="@command('apiEditing')"
+                                                                 width="400px" placeholder="API 網址"/>
+                                                    </vlayout>
+                                                </row>
+                                                <row>
+                                                    <label value="API 回傳格式" width="200px"/>
+                                                    <selectbox model="@load(vm.formatList)"
+                                                               selectedIndex="@bind(vm.ingFormatIndex)"
+                                                               onSelect="@command('apiEditing')"
+                                                               width="80px">
+                                                        <template name="model">
+                                                            <label value="@init(each)"/>
+                                                        </template>
+                                                    </selectbox>
+                                                </row>
+                                                <row>
+                                                    <label value="API 呼叫模式" width="200px"/>
+                                                    <selectbox model="@load(vm.queryList)"
+                                                               selectedIndex="@bind(vm.ingQueryIndex)"
+                                                               onSelect="@command('apiEditing')"
+                                                               width="80px">
+                                                        <template name="model">
+                                                            <label value="@init(each)"/>
+                                                        </template>
+                                                    </selectbox>
+                                                </row>
+                                                <row>
+                                                    <label value="API 認證方式" width="200px"/>
+                                                    <selectbox model="@load(vm.authList)"
+                                                               selectedIndex="@bind(vm.ingAuthIndex)"
+                                                               onSelect="@command('apiEditing')"
+                                                               width="80px">
+                                                        <template name="model">
+                                                            <label value="@init(each)"/>
+                                                        </template>
+                                                    </selectbox>
+                                                </row>
+                                                <row>
+                                                    <label value="API 更新頻率" width="200px"/>
+                                                    <hlayout>
+                                                        <radiogroup id="feq"/>
+                                                        <radio label="每" radiogroup="feq"
+                                                               selected="@bind(vm.ingHasFreq)"
+                                                               onClick="@command('apiEditing')"/>
+                                                        <textbox value="@bind(vm.ingFreqNum)"
+                                                                 onChange="@command('hasFreq')"
+                                                                 width="80px"/>
+                                                        <selectbox model="@load(vm.frequencyList)"
+                                                                   selectedIndex="@bind(vm.ingFreqIndex)"
+                                                                   onSelect="@command('hasFreq')"
+                                                                   width="80px">
+                                                            <template name="model">
+                                                                <label value="@init(each)"/>
+                                                            </template>
+                                                        </selectbox>
+                                                        <radio label="不定時" radiogroup="feq"
+                                                               selected="@bind(vm.ingNoFreq)"
+                                                               onClick="@command('apiEditing')"/>
+                                                    </hlayout>
+                                                </row>
+                                            </rows>
+                                        </grid>
+                                        <hlayout>
+                                            <button label="更新" onClick="@command('saveAPI')"/>
+                                            <button label="取消" onClick="@command('restoreAPI')"/>
+                                        </hlayout>
+                                    </vlayout>
+                                </hbox>
+                            </groupbox>
+                            <hlayout>
+                                <button label="儲存" onClick="@command('saveAll')"/>
+                                <label value="@load(vm.datasetMsg.saveMsg)"/>
+                            </hlayout>
+                        </vlayout>
+                    </center>
+                </borderlayout>
+            </center>
+        </borderlayout>
+    </window>
+</zk>

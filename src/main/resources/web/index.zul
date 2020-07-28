@@ -1,0 +1,25 @@
+<zk>
+    <window viewModel="@id('vm') @init('org.iii.converter.viewmodel.IndexViewModel')">
+        <borderlayout height="1000px">
+            <north title="首頁" maxsize="120" size="120px">
+                <hlayout height="120px" valign="middle">
+                    <button label="編輯品牌" onClick='execution.sendRedirect("/provider")'/>
+                    <button label="編輯數據集" onClick='execution.sendRedirect("/datasets")'/>
+                </hlayout>
+            </north>
+            <center>
+                <vlayout height="400px">
+                    <label value="請完成編輯操作之後，進行匯出"/>
+                    <button label="匯出" onClick='@command("export")'/>
+                    <label value='@load(vm.exportMsg)'/>
+                </vlayout>
+            </center>
+            <south>
+                <vlayout>
+                    <button label="離開" onClick='execution.sendRedirect("/exit")'
+                            iconSclass="z-icon-power-off" dir="reverse"/>
+                </vlayout>
+            </south>
+        </borderlayout>
+    </window>
+</zk>
