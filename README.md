@@ -4,7 +4,7 @@
 
 請確定系統裡有安裝 JRE，或者可上：
 
-1. [ojdkbuild](https://github.com/ojdkbuild/ojdkbuild)
+1. [ojdkbuild](https://github.com/ojdkbuild/ojdkbuild) (**本專案預設開發與測試環境為 ojdkbuild 8**)
 2. [AWS Corretto](https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/downloads-list.html)
 3. [Zulu OpenJDK](https://www.azul.com/downloads/zulu-community/?architecture=x86-64-bit&package=jdk)
 4. [JetBrains OpenJDK](https://bintray.com/jetbrains/intellij-jbr)
