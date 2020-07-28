@@ -12,4 +12,4 @@ CONV_HOME=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 echo "run ConverterUI at $CONV_HOME"
 
-$JAVA_CMD -Dfile.encoding=UTF-8 "$CONV_HOME/ConverterUI.jar"
+$JAVA_CMD -Dfile.encoding=UTF-8 -jar "$CONV_HOME/ConverterUI.jar"
