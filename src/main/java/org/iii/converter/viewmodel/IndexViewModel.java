@@ -25,6 +25,11 @@ public class IndexViewModel {
     private String exportMsg;
 
 
+    @Getter
+    @Setter
+    private String importMsg;
+
+
     private DataExportService exportService;
 
     public IndexViewModel() {
