@@ -13,6 +13,9 @@
                     <button label="匯出" onClick='@command("export")'/>
                     <label value='@load(vm.exportMsg)'/>
                 </vlayout>
+                <vlayout height="400px">
+                    <button label="匯入" onUpload="@command('import')" upload="true"/>
+                </vlayout>
             </center>
             <south>
                 <vlayout>

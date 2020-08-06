@@ -1,0 +1,24 @@
+2020-07-28 13:17:07.837  INFO 12460 --- [Test worker] o.i.c.ConverterUiApplicationTests        : Starting ConverterUiApplicationTests on 140631-NB1-DTI with PID 12460 (started by gemhuang in E:\IIICodes\DEEPLinkou\converter-ui)
+2020-07-28 13:17:07.844  INFO 12460 --- [Test worker] o.i.c.ConverterUiApplicationTests        : No active profile set, falling back to default profiles: default
+2020-07-28 13:17:09.936  INFO 12460 --- [Test worker] org.iii.converter.utility.DBInitialzr    : checking db not exists, build it at E:\IIICodes\DEEPLinkou\converter-ui/datasets
+2020-07-28 13:17:11.491  INFO 12460 --- [Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-28 13:17:11.920  INFO 12460 --- [Test worker] o.z.zkspringboot.ZkWebMvcConfiguration   : ZK-Springboot: InternalViewResolver enabled - e.g. resolving view 'example' to '/zkau/web/example.zul'
+2020-07-28 13:17:12.378  INFO 12460 --- [Test worker] o.z.zkspringboot.ZkAutoConfiguration     : ZK-Springboot: ServletRegistrationBean for DHtmlUpdateServlet with path /zkau
+2020-07-28 13:17:12.408  INFO 12460 --- [Test worker] o.z.z.ZkHomepageConfiguration            : ZK-Springboot: ZkHomepageConfiguration enabled - mapping the root path '/' to 'index'
+2020-07-28 13:17:12.458  INFO 12460 --- [Test worker] o.i.c.ConverterUiApplicationTests        : Started ConverterUiApplicationTests in 5.382 seconds (JVM running for 7.555)
+2020-07-28 13:17:13.212  INFO 12460 --- [Test worker] o.i.converter.utility.DBInitializrTest   : drop table if exists apis;
+create table apis
+(
+    id             uuid          not null,
+    dataset_id     uuid          not null,
+    api_name       varchar(300)  not null,
+    method         varchar(10)   not null,
+    url            varchar(1000) not null,
+    format         varchar(300)  not null,
+    query_mode     varchar(300)  not null,
+    authentication varchar(300)  not null,
+    frequency      varchar(300)  not null,
+
+    constraint pk_apis primary key (id, api_name, method, url)
+);
+2020-07-28 13:17:13.270  INFO 12460 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
