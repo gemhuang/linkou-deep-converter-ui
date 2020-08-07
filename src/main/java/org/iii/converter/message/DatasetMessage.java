@@ -5,13 +5,12 @@ import lombok.Data;
 
 @Data
 public class DatasetMessage {
-    public static final String[] LICENSES = new String[]{"CC BY-SA 4.0", "MIT", "BSD", "Apache-2.0", "GPL", "商用授權"};
+    public static final String[] LICENSES = new String[]{"CC BY-SA 4.0", "MIT", "BSD", "Apache-2.0", "GPL", "政府資料開放授權條款－第1版", "商用授權"};
     public static final String[] METHODS = new String[]{"GET", "POST", "PUT", "DELETE", "其他"};
     public static final String[] FREQUENCIES = new String[]{"秒", "分", "時", "日"};
     public static final String[] FORMATS = new String[]{"JSON", "XML", "PLAIN"};
     public static final String[] QUERIES = new String[]{"ReST", "SOAP", "WebSocket", "HTTP", "TCP/UDP"};
     public static final String[] AUTHORITIES = new String[]{"有", "無"};
-    // public static final String[] CATEGORIES = new String[]{"BusinessPromotion", "CommunityHealth", "UrbanGovernance", "Others"};
     public static final ImmutableBiMap<String, String> CATEGORIES =
             ImmutableBiMap.<String, String>builder()
                     .put("商業促進", "BusinessPromotion")

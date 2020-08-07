@@ -8,13 +8,13 @@
                 </hlayout>
             </north>
             <center>
-                <vlayout>
-                    <vlayout height="400px">
+                <vlayout height="400px">
+                    <vlayout>
                         <label value="請完成編輯操作之後，進行匯出"/>
                         <button label="匯出" onClick='@command("export")'/>
                         <label value='@load(vm.exportMsg)'/>
                     </vlayout>
-                    <vlayout height="400px">
+                    <vlayout>
                         <button label="匯入" onUpload="@command('import')" upload="true"/>
                         <label value="@load(vm.importMsg)"/>
                     </vlayout>
