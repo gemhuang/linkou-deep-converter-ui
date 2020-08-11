@@ -1,6 +1,6 @@
 <zk>
     <window viewModel="@id('vm') @init('org.iii.converter.viewmodel.DatasetsViewModel')">
-        <borderlayout height="2600px">
+        <borderlayout height="3000px">
             <north title="編輯數據集" maxsize="120" size="120px">
                 <hlayout height="120px">
                     <button label="首頁" onClick='execution.sendRedirect("/index")'/>
@@ -31,8 +31,8 @@
                         </vlayout>
                     </west>
 
-                    <center>
-                        <vlayout>
+                    <center autoscroll="true">
+                        <vlayout style="overflow:auto;" width="100%">
                             <groupbox mold="3d">
                                 <caption label="數據集主檔"/>
                                 <grid>
