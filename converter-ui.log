@@ -1,0 +1,74 @@
+2020-08-11 13:51:06.172  INFO 7608 --- [Test worker] o.i.c.ConverterUiApplicationTests        : Starting ConverterUiApplicationTests on 140631-NB1-DTI with PID 7608 (started by gemhuang in E:\IIICodes\DEEPLinkou\converter-ui)
+2020-08-11 13:51:06.182  INFO 7608 --- [Test worker] o.i.c.ConverterUiApplicationTests        : No active profile set, falling back to default profiles: default
+2020-08-11 13:51:08.317  INFO 7608 --- [Test worker] org.iii.converter.utility.DBInitialzr    : checking db not exists, build it at E:\IIICodes\DEEPLinkou\converter-ui/datasets
+2020-08-11 13:51:09.677  INFO 7608 --- [Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-08-11 13:51:10.047  INFO 7608 --- [Test worker] o.z.zkspringboot.ZkWebMvcConfiguration   : ZK-Springboot: InternalViewResolver enabled - e.g. resolving view 'example' to '/zkau/web/example.zul'
+2020-08-11 13:51:10.674  INFO 7608 --- [Test worker] o.z.zkspringboot.ZkAutoConfiguration     : ZK-Springboot: ServletRegistrationBean for DHtmlUpdateServlet with path /zkau
+2020-08-11 13:51:10.753  INFO 7608 --- [Test worker] o.z.z.ZkHomepageConfiguration            : ZK-Springboot: ZkHomepageConfiguration enabled - mapping the root path '/' to 'index'
+2020-08-11 13:51:10.892  INFO 7608 --- [Test worker] o.i.c.ConverterUiApplicationTests        : Started ConverterUiApplicationTests in 5.447 seconds (JVM running for 7.406)
+2020-08-11 13:51:11.752  INFO 7608 --- [Test worker] o.i.converter.utility.DBInitializrTest   : drop table if exists apis;
+create table apis
+(
+    id             uuid          not null,
+    dataset_id     uuid          not null,
+    api_name       varchar(300)  not null,
+    method         varchar(10)   not null,
+    url            varchar(1000) not null,
+    format         varchar(300)  not null,
+    query_mode     varchar(300)  not null,
+    authentication varchar(300)  not null,
+    frequency      varchar(300)  not null,
+
+    constraint pk_apis primary key (id, api_name, method, url)
+);
+2020-08-11 13:51:11.832  INFO 7608 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-08-11 14:37:54.542  INFO 12556 --- [restartedMain] o.iii.converter.ConverterUiApplication   : Starting ConverterUiApplication on 140631-NB1-DTI with PID 12556 (E:\IIICodes\DEEPLinkou\converter-ui\build\classes\java\main started by gemhuang in E:\IIICodes\DEEPLinkou\converter-ui)
+2020-08-11 14:37:54.547  INFO 12556 --- [restartedMain] o.iii.converter.ConverterUiApplication   : No active profile set, falling back to default profiles: default
+2020-08-11 14:37:54.616  INFO 12556 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-08-11 14:37:54.617  INFO 12556 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-08-11 14:37:56.710  INFO 12556 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-08-11 14:37:56.727  INFO 12556 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-08-11 14:37:56.728  INFO 12556 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-08-11 14:37:56.870  INFO 12556 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-08-11 14:37:56.871  INFO 12556 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2254 ms
+2020-08-11 14:37:56.951  INFO 12556 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-08-11 14:37:57.331  INFO 12556 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-08-11 14:37:57.341  INFO 12556 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:E:\IIICodes\DEEPLinkou\converter-ui/datasets'
+2020-08-11 14:37:57.357  INFO 12556 --- [restartedMain] o.z.zkspringboot.ZkAutoConfiguration     : ZK-Springboot: ServletRegistrationBean for DHtmlUpdateServlet with path /zkau
+2020-08-11 14:37:57.450  INFO 12556 --- [restartedMain] org.zkoss.zk.ui.http.WebManager          : Starting ZK 9.0.0.1 CE (build: 2020051911)
+2020-08-11 14:37:57.478  INFO 12556 --- [restartedMain] org.zkoss.zk.ui.sys.ConfigParser         : Loading system default
+2020-08-11 14:37:57.560  INFO 12556 --- [restartedMain] org.zkoss.zk.ui.sys.ConfigParser         : Parsing jar:file:/C:/Users/gemhuang/.m2/repository/org/zkoss/zk/zul/9.0.0.1-Eval/zul-9.0.0.1-Eval.jar!/metainfo/zk/zk.xml
+2020-08-11 14:37:58.373  INFO 12556 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-08-11 14:37:58.528  INFO 12556 --- [restartedMain] o.z.zkspringboot.ZkWebMvcConfiguration   : ZK-Springboot: InternalViewResolver enabled - e.g. resolving view 'example' to '/zkau/web/example.zul'
+2020-08-11 14:37:58.663  INFO 12556 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-08-11 14:37:58.666  INFO 12556 --- [restartedMain] o.z.z.ZkHomepageConfiguration            : ZK-Springboot: ZkHomepageConfiguration enabled - mapping the root path '/' to 'index'
+2020-08-11 14:37:58.753  INFO 12556 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-08-11 14:37:58.766  INFO 12556 --- [restartedMain] o.iii.converter.ConverterUiApplication   : Started ConverterUiApplication in 5.064 seconds (JVM running for 5.852)
+2020-08-11 14:39:21.893  INFO 12968 --- [restartedMain] o.iii.converter.ConverterUiApplication   : Starting ConverterUiApplication on 140631-NB1-DTI with PID 12968 (E:\IIICodes\DEEPLinkou\converter-ui\build\classes\java\main started by gemhuang in E:\IIICodes\DEEPLinkou\converter-ui)
+2020-08-11 14:39:21.896  INFO 12968 --- [restartedMain] o.iii.converter.ConverterUiApplication   : No active profile set, falling back to default profiles: default
+2020-08-11 14:39:21.960  INFO 12968 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-08-11 14:39:21.960  INFO 12968 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-08-11 14:39:23.696  INFO 12968 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-08-11 14:39:23.713  INFO 12968 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-08-11 14:39:23.713  INFO 12968 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-08-11 14:39:23.925  INFO 12968 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-08-11 14:39:23.926  INFO 12968 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1966 ms
+2020-08-11 14:39:24.001  INFO 12968 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-08-11 14:39:24.238  INFO 12968 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-08-11 14:39:24.249  INFO 12968 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:E:\IIICodes\DEEPLinkou\converter-ui/datasets'
+2020-08-11 14:39:24.271  INFO 12968 --- [restartedMain] o.z.zkspringboot.ZkAutoConfiguration     : ZK-Springboot: ServletRegistrationBean for DHtmlUpdateServlet with path /zkau
+2020-08-11 14:39:24.350  INFO 12968 --- [restartedMain] org.zkoss.zk.ui.http.WebManager          : Starting ZK 9.0.0.1 CE (build: 2020051911)
+2020-08-11 14:39:24.361  INFO 12968 --- [restartedMain] org.zkoss.zk.ui.sys.ConfigParser         : Loading system default
+2020-08-11 14:39:24.430  INFO 12968 --- [restartedMain] org.zkoss.zk.ui.sys.ConfigParser         : Parsing jar:file:/C:/Users/gemhuang/.m2/repository/org/zkoss/zk/zul/9.0.0.1-Eval/zul-9.0.0.1-Eval.jar!/metainfo/zk/zk.xml
+2020-08-11 14:39:25.053  INFO 12968 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-08-11 14:39:25.196  INFO 12968 --- [restartedMain] o.z.zkspringboot.ZkWebMvcConfiguration   : ZK-Springboot: InternalViewResolver enabled - e.g. resolving view 'example' to '/zkau/web/example.zul'
+2020-08-11 14:39:25.323  INFO 12968 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-08-11 14:39:25.326  INFO 12968 --- [restartedMain] o.z.z.ZkHomepageConfiguration            : ZK-Springboot: ZkHomepageConfiguration enabled - mapping the root path '/' to 'index'
+2020-08-11 14:39:25.416  INFO 12968 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-08-11 14:39:25.430  INFO 12968 --- [restartedMain] o.iii.converter.ConverterUiApplication   : Started ConverterUiApplication in 4.022 seconds (JVM running for 4.634)
+2020-08-11 14:39:45.547  INFO 12968 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-08-11 14:39:45.548  INFO 12968 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-08-11 14:39:45.555  INFO 12968 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2020-08-11 14:39:45.946  INFO 12968 --- [http-nio-8080-exec-1] o.z.util.resource.impl.LabelLoaderImpl   : Loading labels for zh_TW
+2020-08-11 14:39:45.950  INFO 12968 --- [http-nio-8080-exec-1] o.z.util.resource.impl.LabelLoaderImpl   : Loading labels for zh
+2020-08-11 14:39:45.953  INFO 12968 --- [http-nio-8080-exec-1] o.z.util.resource.impl.LabelLoaderImpl   : Opening file:/E:/IIICodes/DEEPLinkou/converter-ui/build/resources/main/metainfo/zk-label.properties

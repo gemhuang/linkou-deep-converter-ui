@@ -147,7 +147,7 @@
                                 <hbox>
                                     <groupbox width="200px" mold="3d">
                                         <caption label="API 列表"/>
-                                        <vlayout>
+                                        <vlayout style="overflow:auto;">
                                             <button label="新增數據 API" onClick="@command('initAPI')" width="100%"/>
                                             <listbox model="@load(vm.ingDatasetAPIs)"
                                                      onDoubleClick="@command('editAPI')"
