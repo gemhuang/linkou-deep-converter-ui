@@ -16,7 +16,7 @@ ENV JDK_VER "14.0.2.j9-adpt"
 RUN yes | /bin/bash -l -c "sdk install java ${JDK_VER}"
 ENV JAVA_HOME "/root/.sdkman/candidates/java/current"
 
-ENV GRD_VER "6.5.1"
+ENV GRD_VER "6.6"
 RUN yes | /bin/bash -l -c "sdk install gradle ${GRD_VER}"
 ENV GRADLE_HOME "/root/.sdkman/candidates/gradle/current"
 
