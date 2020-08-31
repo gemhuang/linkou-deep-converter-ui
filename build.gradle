@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'org.iii'
-version = '1.0.0-RELEASE'
+version = '1.0.1-RELEASE'
 
 ext {
 	zkStarterVersion = '2.3.1'
