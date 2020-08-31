@@ -12,7 +12,7 @@ RUN curl -s "https://get.sdkman.io" | bash
 RUN source "$HOME/.sdkman/bin/sdkman-init.sh"
 RUN chmod a+x "$HOME/.sdkman/bin/sdkman-init.sh"
 
-ENV JDK_VER "14.0.2.j9-adpt"
+ENV JDK_VER "14.0.2.hs-adpt"
 RUN yes | /bin/bash -l -c "sdk install java ${JDK_VER}"
 ENV JAVA_HOME "/root/.sdkman/candidates/java/current"
 
