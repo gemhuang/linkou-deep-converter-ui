@@ -50,8 +50,7 @@ public class DBInitialzr {
     }
 
     private static String buildDBPass(String dbPath) {
-        // return HashUtils.sha256(dbPath);
-        return "converter-db";
+        return HashUtils.sha256(dbPath);
     }
 
     public static String loadSQLFile(String sqlFileName) throws IOException {
