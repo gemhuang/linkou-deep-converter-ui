@@ -103,7 +103,7 @@
                                             <label value="數據集檔案" width="300px"/>
                                             <hlayout>
                                                 <button label="上傳 data.zip" onUpload="@command('uploadDataZip')"
-                                                        upload="true"/>
+                                                        upload="true,maxsize=-1"/>
                                                 <label value="@load(vm.ingDataZipName)"/>
                                             </hlayout>
                                         </row>
